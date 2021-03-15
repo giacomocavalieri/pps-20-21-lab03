@@ -37,4 +37,9 @@ object ListTask {
     case Teacher(_, course) => List.of(course)
     case _ => Nil()
   })
+
+  def foldLeft[A, B](l: List[A])(base: B)(f: (B, A) => B): B = l match {
+    case Cons(head, tail) => f(foldLeft(tail)(base)(f), head)
+    case Nil() => base
+  }
 }
