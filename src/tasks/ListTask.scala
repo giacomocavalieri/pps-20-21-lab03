@@ -2,6 +2,7 @@ package tasks
 
 import u02.Optionals._
 import u02.Optionals.Option._
+import u02.SumTypes._
 import u03.Lists._
 import u03.Lists.List._
 
@@ -31,4 +32,9 @@ object ListTask {
     case Cons(head, tail) => Some(Math.max(head, getOrElse(max(tail), Int.MinValue)))
     case Nil() => None()
   }
+
+  def peopleToCourses(l: List[Person]): List[String] = flatMap(l)({
+    case Teacher(_, course) => List.of(course)
+    case _ => Nil()
+  })
 }

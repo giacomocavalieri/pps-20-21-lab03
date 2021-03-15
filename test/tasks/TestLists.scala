@@ -3,6 +3,7 @@ package tasks
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import tasks.ListTask._
+import u02.SumTypes._
 import u03.Lists._
 import u03.Lists.List.append
 import u02.Optionals._
@@ -36,5 +37,11 @@ class TestLists {
   @Test def testMax(): Unit = {
     assertEquals(Option.Some(20), max(list))
     assertEquals(Option.None(), max(List.Nil()))
+  }
+
+  @Test def testPeopleToCourses(): Unit = {
+    val people: List[Person] = List.of(Student("Student", 1998), Teacher("Teacher", "Course"))
+    assertEquals(List.of("Course"), peopleToCourses(people))
+    assertEquals(List.Nil(), peopleToCourses(List.Nil()))
   }
 }
