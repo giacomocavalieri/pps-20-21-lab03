@@ -17,6 +17,10 @@ class TestStream {
     assertStreamEqualsList(List.Nil(), drop(testStream)(4))
   }
 
+  @Test def testConstant(): Unit = {
+    assertStreamEqualsList(List.of(1, 1, 1), take(constant(1))(3))
+  }
+
   def assertStreamEqualsList[A](expected: List[A], actual: Stream[A]): Unit = {
     assertEquals(expected, toList(actual))
   }

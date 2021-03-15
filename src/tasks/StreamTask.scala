@@ -9,4 +9,6 @@ object StreamTask {
     case (Empty(), n) => empty()
     case (Cons(fh, ft), n) => drop(ft())(n-1)
   }
+
+  def constant[A](a: A): Stream[A] = iterate(a)(x => x)
 }
