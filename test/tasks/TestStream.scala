@@ -21,6 +21,11 @@ class TestStream {
     assertStreamEqualsList(List.of(1, 1, 1), take(constant(1))(3))
   }
 
+  @Test def testFibStream(): Unit = {
+    val expectedSequence = List.append(List.of(0, 1, 1), List.of(2, 3, 5))
+    assertStreamEqualsList(expectedSequence, take(fib)(6))
+  }
+
   def assertStreamEqualsList[A](expected: List[A], actual: Stream[A]): Unit = {
     assertEquals(expected, toList(actual))
   }
