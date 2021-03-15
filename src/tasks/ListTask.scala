@@ -1,5 +1,6 @@
 package tasks
 
+import u02.Optionals._
 import u03.Lists._
 import u03.Lists.List._
 
@@ -24,4 +25,18 @@ object ListTask {
     case a if predicate(a) => List.of(a)
     case _ => Nil()
   })
+
+  def max(l: List[Int]): Option[Int] = {
+    @tailrec
+    def findMax(list: List[Int], currentMax: Int): Int = (list, currentMax) match {
+      case (Nil(), currentMax) => currentMax
+      case (Cons(head, tail), currentMax) if head > currentMax => findMax(tail, head)
+      case (Cons(_, tail), currentMax) => findMax(tail, currentMax)
+    }
+
+    l match {
+      case Cons(head, tail) => Option.Some(findMax(tail, head))
+      case Nil() => Option.None()
+    }
+  }
 }
