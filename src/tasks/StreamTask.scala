@@ -3,7 +3,10 @@ package tasks
 import u03.Streams.Stream
 import u03.Streams.Stream._
 
+import scala.annotation.tailrec
+
 object StreamTask {
+  @tailrec
   def drop[A](stream: Stream[A])(n: Int): Stream[A] = (stream, n) match {
     case (stream, 0) => stream
     case (Empty(), n) => empty()
