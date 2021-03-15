@@ -14,7 +14,7 @@ object ListTask {
     }
 
     def flatMap[A, B](l: List[A])(mapper: A => List[B]): List[B] = l match {
-      case Cons(head, tail) => ???
+      case Cons(head, tail) => append(mapper(head), flatMap(tail)(mapper))
       case Nil() => Nil()
     }
 }
