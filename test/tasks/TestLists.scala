@@ -50,4 +50,10 @@ class TestLists {
     assertEquals(30, foldLeft(list)(0)(_ + _))
     assertEquals(-30, foldLeft(list)(0)(_ - _))
   }
+
+  @Test def testFoldRight(): Unit = {
+    assertEquals(0, foldRight(List.Nil[Int]())(0)(_ + _))
+    assertEquals(30, foldRight(list)(0)(_ + _))
+    assertEquals(-10, foldRight(list)(0)(_ - _))
+  }
 }

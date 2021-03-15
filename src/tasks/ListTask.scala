@@ -42,4 +42,9 @@ object ListTask {
     case Cons(head, tail) => f(foldLeft(tail)(base)(f), head)
     case Nil() => base
   }
+
+  def foldRight[A, B](l: List[A])(base: B)(fold: (A, B) => B): B = l match {
+    case Cons(head, tail) => fold(head, foldRight(tail)(base)(fold))
+    case Nil() => base
+  }
 }
