@@ -10,6 +10,10 @@ object Lists {
     case class Cons[E](head: E, tail: List[E]) extends List[E]
     case class Nil[E]() extends List[E]
 
+    def of[A](a: A): List[A] = Cons(a, Nil())
+    def of[A](a1: A, a2: A): List[A] = Cons(a1, of(a2))
+    def of[A](a1: A, a2: A, a3: A): List[A] = Cons(a1, of(a2, a3))
+
     def sum(l: List[Int]): Int = l match {
       case Cons(h, t) => h + sum(t)
       case _ => 0
