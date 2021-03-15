@@ -9,8 +9,8 @@ object StreamTask {
   @tailrec
   def drop[A](stream: Stream[A])(n: Int): Stream[A] = (stream, n) match {
     case (stream, 0) => stream
-    case (Empty(), n) => empty()
-    case (Cons(fh, ft), n) => drop(ft())(n-1)
+    case (Empty(), _) => empty()
+    case (Cons(_, ft), n) => drop(ft())(n-1)
   }
 
   def constant[A](a: A): Stream[A] = iterate(a)(x => x)
