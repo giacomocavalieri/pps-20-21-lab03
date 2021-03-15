@@ -33,6 +33,11 @@ object Lists {
       case _ => l2
     }
 
+    def flatMap[A, B](l: List[A])(mapper: A => List[B]): List[B] = l match {
+      case Cons(head, tail) => ???
+      case Nil() => empty()
+    }
+
     def map[A,B](l: List[A])(mapper: A=>B): List[B] = l match {
       case Cons(h, t) => Cons(mapper(h), map(t)(mapper))
       case Nil() => Nil()

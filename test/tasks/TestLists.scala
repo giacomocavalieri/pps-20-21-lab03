@@ -13,4 +13,9 @@ class TestLists {
     assertEquals(List.empty(), drop(list, 3))
     assertEquals(List.empty(), drop(list, 4))
   }
+
+  @Test def testFlatMap(): Unit = {
+    val list = List.of(10, 20)
+    assertEquals(List.of(20, 40), flatMap(list)((x: Int) => List.of(2 * x)))
+  }
 }
