@@ -3,6 +3,7 @@ package tasks
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import tasks.Lists._
+import tasks.Lists.List._
 
 class TestLists {
   @Test def testDrop(): Unit = {

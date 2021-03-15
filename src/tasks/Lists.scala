@@ -22,6 +22,12 @@ object Lists {
       case _ => 0
     }
 
+    def drop[A](l: List[A], n: Int): List[A] = (l, n) match {
+      case (list, 0) => list
+      case (Nil(), _) => empty()
+      case (Cons(_, tail), n) => drop(tail, n-1)
+    }
+
     def append[A](l1: List[A], l2: List[A]): List[A] = (l1, l2) match {
       case (Cons(h, t), l2) => Cons(h, append(t, l2))
       case _ => l2
