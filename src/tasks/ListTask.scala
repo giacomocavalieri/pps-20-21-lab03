@@ -19,4 +19,9 @@ object ListTask {
   }
 
   def map[A, B](l: List[A])(mapper: A => B): List[B] = flatMap(l)(a => List.of(mapper(a)))
+
+  def filter[A](l: List[A])(predicate: A => Boolean): List[A] = flatMap(l)({
+    case a if predicate(a) => List.of(a)
+    case _ => Nil()
+  })
 }

@@ -26,4 +26,12 @@ class TestLists {
     assertEquals(List.of(20, 40), map(list)(_ * 2))
     assertEquals(List.of(true, false), map(list)(_ < 15))
   }
+
+  @Test def testFilter(): Unit = {
+    val list = List.of(10, 20)
+    assertEquals(List.Nil(), filter(list)(_ => false))
+    assertEquals(list, filter(list)(_ => true))
+    assertEquals(List.of(10), filter(list)(_ < 15))
+    assertEquals(List.of(20), filter(list)(_ > 15))
+  }
 }
