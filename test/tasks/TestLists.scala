@@ -44,4 +44,10 @@ class TestLists {
     assertEquals(List.of("Course"), peopleToCourses(people))
     assertEquals(List.Nil(), peopleToCourses(List.Nil()))
   }
+
+  @Test def testFoldLeft(): Unit = {
+    assertEquals(0, foldLeft(List.Nil())(0)(_ + _))
+    assertEquals(30, foldLeft(list)(0)(_ + _))
+    assertEquals(-30, foldLeft(list)(0)(_ - _))
+  }
 }
