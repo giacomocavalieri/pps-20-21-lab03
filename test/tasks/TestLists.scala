@@ -18,5 +18,6 @@ class TestLists {
   @Test def testFlatMap(): Unit = {
     val list = List.of(10, 20)
     assertEquals(List.of(20, 40), flatMap(list)((x: Int) => List.of(2 * x)))
+    assertEquals(append(List.of(10, 10), List.of(20, 20)), flatMap(list)(x => List.of(x, x)))
   }
 }
