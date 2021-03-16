@@ -38,13 +38,14 @@ object ListTask {
     case _ => Nil()
   })
 
+  @tailrec
   def foldLeft[A, B](l: List[A])(base: B)(f: (B, A) => B): B = l match {
-    case Cons(head, tail) => f(foldLeft(tail)(base)(f), head)
+    case Cons(head, tail) => foldLeft(tail)(f(base, head))(f)
     case Nil() => base
   }
 
-  def foldRight[A, B](l: List[A])(base: B)(fold: (A, B) => B): B = l match {
-    case Cons(head, tail) => fold(head, foldRight(tail)(base)(fold))
+  def foldRight[A, B](l: List[A])(base: B)(f: (A, B) => B): B = l match {
+    case Cons(head, tail) => f(head, foldRight(tail)(base)(f))
     case Nil() => base
   }
 }
