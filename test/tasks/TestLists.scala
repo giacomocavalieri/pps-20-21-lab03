@@ -49,11 +49,13 @@ class TestLists {
     assertEquals(0, foldLeft(List.Nil[Int]())(0)(_ + _))
     assertEquals(30, foldLeft(testList)(0)(_ + _))
     assertEquals(-30, foldLeft(testList)(0)(_ - _))
+    assertEquals("1020", foldLeft(testList)("")((acc, elem) => acc+elem))
   }
 
   @Test def testFoldRight(): Unit = {
     assertEquals(0, foldRight(List.Nil[Int]())(0)(_ + _))
     assertEquals(30, foldRight(testList)(0)(_ + _))
     assertEquals(-10, foldRight(testList)(0)(_ - _))
+    assertEquals("2010", foldRight(testList)("")((elem, acc) => acc+elem))
   }
 }
