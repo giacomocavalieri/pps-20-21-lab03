@@ -11,9 +11,8 @@ import scala.annotation.tailrec
 object ListTask {
   @tailrec
   def drop[A](l: List[A], n: Int): List[A] = (l, n) match {
-    case (list, 0) => list
-    case (Nil(), _) => Nil()
-    case (Cons(_, tail), n) => drop(tail, n-1)
+    case (Cons(_, tail), n) if n > 0 => drop(tail, n-1)
+    case (list, _) => list
   }
 
   def flatMap[A, B](l: List[A])(mapper: A => List[B]): List[B] = l match {

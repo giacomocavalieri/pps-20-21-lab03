@@ -9,7 +9,7 @@ import u03.Lists.List.append
 import u02.Optionals._
 
 class TestLists {
-  val testList = List.of(10, 20)
+  val testList: List[Int] = List.of(10, 20)
 
   @Test def testDrop(): Unit = {
     assertEquals(List.of(20), drop(testList, 1))
